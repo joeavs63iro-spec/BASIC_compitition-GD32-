@@ -1,0 +1,94 @@
+/*********************************************************************************************************************
+* @file            car_init.c
+* @author          
+* @Target core     GD32F303RCT6
+* @revisions       2022.09.19, V1.0
+* @modify          none
+********************************************************************************************************************/
+
+#include "car_init.h"
+#include "ui.h"
+#include "flash.h"
+//-------------------------------------------------------------------------------------------------------------------
+// @brief        智能车初始化
+// @param        void    
+// @return       void
+// Sample usage:        car_init(); 
+                        //智能车初始化
+//-------------------------------------------------------------------------------------------------------------------
+void car_init(void)
+{
+    systick_config();							  //时钟初始化
+	
+    uart0_init(UART0);							//串行口初始化
+	
+    adc_channel_init(ADC0, ADC_CH_10);    //ADC初始化
+    adc_channel_init(ADC0, ADC_CH_11);
+    adc_channel_init(ADC0, ADC_CH_12);
+    adc_channel_init(ADC0, ADC_CH_13);
+    adc_channel_init(ADC0, ADC_CH_15);
+	
+	track_para_init();
+
+    key_init(K1);								//6按键初始化
+    key_init(K2);
+    key_init(K3);
+    key_init(K4);
+    key_init(K5);
+    key_init(K6);
+    reed_init();                         //干簧管PA5上拉输入初始化
+    flash_init_and_load();
+    motor_init(left);							//左电机初始化
+    motor_init(right);							//右电机初始化
+	  encoder_timer_config();        // 编码器初始化
+		Motor_PID_Init();
+		
+    ws2812b_init();								//RGB灯初始化
+    car_both_rgb_off();
+	
+    ultra_init();								//超声波初始化
+		Init_TOF400C();            //tof初始化
+    oled_init();               //OLED初始化,可根据用户需要自行开启
+		oled_display_on();
+    ui_init();
+		
+    board_led_init(LED1);                 //初始化LED1端口PB2
+    board_led_init(LED2);                 //初始化LED2端口PB11
+    int_init();									//中断初始化
+				
+}
+
+//其它的初始化均可由用户自行在下方编写，并添加在car_init()函数中
+//例如：中断初始化等
+//-------------------------------------------------------------------------------------------------------------------
+// @brief        中断初始化
+// @param        void    
+// @return       void
+// Sample usage:        int_init();//中断初始化
+//-------------------------------------------------------------------------------------------------------------------
+void int_init(void)
+{
+    nvic_priority_group_set(NVIC_PRIGROUP_PRE4_SUB0);
+
+    exti_enable(REED_PORT, REED_PIN, FALLING);
+    reed_init();                         //exti_enable会改成浮空输入，这里恢复PA5上拉
+
+    // TOF400C GPIO1/INT is active-low: every completed range causes a falling edge.
+    // Configure EXTI12 directly because exti_enable() changes every EXTI IRQ priority.
+    rcu_periph_clock_enable(RCU_AF);
+    rcu_periph_clock_enable(RCU_GPIOA);
+    gpio_pin_init(TOF400C_INT_PORT, IN_PULLUP, TOF400C_INT_PIN);
+    gpio_exti_source_select(GPIO_PORT_SOURCE_GPIOA, GPIO_PIN_SOURCE_12);
+    exti_init(TOF400C_INT_EXTI_LINE, EXTI_INTERRUPT, EXTI_TRIG_FALLING);
+    exti_interrupt_flag_clear(TOF400C_INT_EXTI_LINE);
+
+    nvic_irq_enable(EXTI5_9_IRQn, 0, 0); //干簧管外部中断最高优先级
+    nvic_irq_enable(TOF400C_INT_IRQn, TOF400C_INT_PRIORITY, 0);
+    exti_interrupt_enable(TOF400C_INT_EXTI_LINE);
+
+    // If data became ready before EXTI12 was enabled, preserve that latched event.
+    if(RESET == gpio_get_input(TOF400C_INT_PORT, TOF400C_INT_PIN))
+    {
+        tof_data_ready = 1;
+    }
+}
