@@ -1,0 +1,6 @@
+-c --cpu Cortex-M4 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\Libraries\Device\CMSIS -I ..\..\Libraries\Device\CMSIS\GD\GD32F30x\Include -I ..\CODE -I ..\USER\src -I ..\USER\inc -I ..\..\Libraries\hefei_libraries -I ..\..\Libraries\hefei_peripheral -I ..\..\Libraries\Device\CMSIS\GD\GD32F30x\Source\ARM -I ..\..\Libraries\Device\GD32F30x_standard_peripheral\GD32F30x_Lib\Inc -I ..\..\Libraries\Device\GD32F30x_standard_peripheral\GD32F30x_Lib\Head -I ..\..\Libraries\Device\GD32F30x_standard_peripheral\Include -I ..\..\Libraries\Device\GD32F30x_standard_peripheral\Source
+-ID:\MDK\ARM\RV31\INC
+-ID:\MDK\ARM\CMSIS\Include
+-ID:\MDK\ARM\Inc\GD\GD32F30x
+-D__UVISION_VERSION="523" -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD
+-o .\output\systick.o --omf_browse .\output\systick.crf --depend .\output\systick.d "..\..\Libraries\hefei_libraries\systick.c"

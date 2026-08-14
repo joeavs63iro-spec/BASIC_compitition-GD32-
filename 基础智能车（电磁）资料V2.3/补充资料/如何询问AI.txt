@@ -1,0 +1,18 @@
+软件问题如何问AI
+软件名+芯片+遇到的问题+中文回答
+例如·问题
+MounRiver Studio在编译CH32V307时出现
+implicit declaration of function 'Set_image_twovalues '怎么解决,中文回答
+
+AI回答
+‌隐式函数声明警告‌
+在main.c第165行调用Set_image_twovalues()时，编译器未找到该函数的显式声明，
+导致自动生成隐式声明（默认返回int类型）57。解决方法是：
+在main.c文件开头或对应头文件中添加函数声明
+
+自己尝试将Set_image_twovalues()移动到main函数前面
+
+如果问题未解决可以继续询问:
+原本问题+自己尝试的办法+现在遇到的问题。
+
+注释：芯片名称一般可以省略，但是出现串口问题时不可以省略
