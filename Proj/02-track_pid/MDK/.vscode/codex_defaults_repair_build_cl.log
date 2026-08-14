@@ -1,0 +1,643 @@
+*** Using Compiler 'V6.24', folder: 'D:\APP\KeilMDK\MDK\ARM\ARMCLANG\Bin'
+Build target 'GD32F30X_CL'
+compiling gd32f30x_it.c...
+../../Libraries/hefei_libraries/hf_adc.c(131): error: use of undeclared identifier 'ADC2'
+  131 |     else if(adc_periph == ADC2)
+      |                           ^
+../../Libraries/hefei_libraries/hf_adc.c(133): error: use of undeclared identifier 'RCU_ADC2'
+  133 |         rcu_periph_clock_enable(RCU_ADC2);
+      |                                 ^
+2 errors generated.
+compiling hf_adc.c...
+compiling hf_i2c_software.c...
+compiling main.c...
+compiling gd32f30x_dac.c...
+../../Libraries/hefei_libraries/hf_systick.c(27): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+   27 |                         printf("ʱ<D6>ӹ<FD><B8>ߣ<AC><CE><U+07B7><A8><C5><E4><D6><C3>1ms<D6>жϣ<AC><D0><E8><B5><F7><D5><FB>\n");
+      |                                  ^~~~ ~~~~~~~~ ~~~~~~~~        ~~~~~~~~~~~~~~~~~~~~   ~~~~  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../Libraries/hefei_libraries/hf_systick.c(31): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+   31 |                         printf("<C5><E4><D6><C3>ʧ<B0><DC>\n");
+      |                                 ^~~~~~~~~~~~~~~~ ~~~~~~~~
+../../Libraries/hefei_libraries/hf_systick.c(93): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+   93 |                 printf("g_millis<B7><A2><C9><FA><D2><E7><B3><F6><A3><AC><D0><E8><B5><F7><D5><FB>\n");
+      |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3 warnings generated.
+compiling hf_systick.c...
+compiling gd32f30x_can.c...
+../../Libraries/hefei_libraries/hf_uart.c(303): warning: unused parameter 'f' [-Wunused-parameter]
+  303 | int fputc(int ch, FILE *f)
+      |                         ^
+1 warning generated.
+compiling hf_uart.c...
+compiling gd32f30x_exti.c...
+compiling HF_HC-SR04.c...
+compiling hf_i2c_hardware.c...
+compiling gd32f30x_ctc.c...
+compiling hf_flash.c...
+compiling system_gd32f30x.c...
+compiling gd32f30x_bkp.c...
+compiling HF_WS2812b.c...
+compiling gd32f30x_exmc.c...
+../../Libraries/hefei_libraries/hf_exti.c(154): warning: variable 'exti_num' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+  154 |     else if(exti_pin == GPIO_PIN_15)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~
+../../Libraries/hefei_libraries/hf_exti.c(179): note: uninitialized use occurs here
+  179 |     exti_interrupt_flag_clear((exti_line_enum)exti_num);
+      |                                               ^~~~~~~~
+../../Libraries/hefei_libraries/hf_exti.c(154): note: remove the 'if' if its condition is always true
+  154 |     else if(exti_pin == GPIO_PIN_15)
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+  155 |     {
+../../Libraries/hefei_libraries/hf_exti.c(27): note: initialize the variable 'exti_num' to silence this warning
+   27 |     uint32_t exti_num;
+      |                      ^
+      |                       = 0
+../../Libraries/hefei_libraries/hf_exti.c(72): warning: variable 'exti_source_gpio' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+   72 |     else if(gpio_periph == GPIOG)
+      |             ^~~~~~~~~~~~~~~~~~~~
+../../Libraries/hefei_libraries/hf_exti.c(161): note: uninitialized use occurs here
+  161 |     gpio_exti_source_select(exti_source_gpio, exti_source_pin);
+      |                             ^~~~~~~~~~~~~~~~
+../../Libraries/hefei_libraries/hf_exti.c(72): note: remove the 'if' if its condition is always true
+   72 |     else if(gpio_periph == GPIOG)
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~
+   73 |     {
+../../Libraries/hefei_libraries/hf_exti.c(25): note: initialize the variable 'exti_source_gpio' to silence this warning
+   25 |     uint8_t exti_source_gpio;
+      |                             ^
+      |                              = '\0'
+../../Libraries/hefei_libraries/hf_exti.c(154): warning: variable 'exti_source_pin' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+  154 |     else if(exti_pin == GPIO_PIN_15)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~
+../../Libraries/hefei_libraries/hf_exti.c(161): note: uninitialized use occurs here
+  161 |     gpio_exti_source_select(exti_source_gpio, exti_source_pin);
+      |                                               ^~~~~~~~~~~~~~~
+../../Libraries/hefei_libraries/hf_exti.c(154): note: remove the 'if' if its condition is always true
+  154 |     else if(exti_pin == GPIO_PIN_15)
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+  155 |     {
+../../Libraries/hefei_libraries/hf_exti.c(26): note: initialize the variable 'exti_source_pin' to silence this warning
+   26 |     uint8_t exti_source_pin;
+      |                            ^
+      |                             = '\0'
+../../Libraries/hefei_libraries/hf_exti.c(260): warning: variable 'exti_num' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+  260 |     else if(exti_pin == GPIO_PIN_15)  
+      |             ^~~~~~~~~~~~~~~~~~~~~~~
+../../Libraries/hefei_libraries/hf_exti.c(266): note: uninitialized use occurs here
+  266 |     exti_interrupt_disable((exti_line_enum)exti_num);
+      |                                            ^~~~~~~~
+../../Libraries/hefei_libraries/hf_exti.c(260): note: remove the 'if' if its condition is always true
+  260 |     else if(exti_pin == GPIO_PIN_15)  
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+  261 |     {
+../../Libraries/hefei_libraries/hf_exti.c(194): note: initialize the variable 'exti_num' to silence this warning
+  194 |     uint32_t exti_num;
+      |                      ^
+      |                       = 0
+4 warnings generated.
+compiling hf_exti.c...
+compiling gd32f30x_crc.c...
+compiling gd32f30x_dma.c...
+compiling hf_spi.c...
+../../Libraries/hefei_libraries/hf_pit.c(19): warning: unused parameter 'timer_period' [-Wunused-parameter]
+   19 | void timer_pit_interrupt_ms(uint32_t timer_periph, uint16_t timer_period)
+      |                                                             ^
+1 warning generated.
+compiling hf_pit.c...
+../../Libraries/hefei_libraries/hf_pwm.c(203): warning: variable 'Period' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+  203 |     else if(timer_periph == TIMER7)
+      |             ^~~~~~~~~~~~~~~~~~~~~~
+../../Libraries/hefei_libraries/hf_pwm.c(208): note: uninitialized use occurs here
+  208 |     timer_channel_output_pulse_value_config(timer_periph, timer_ch, pwm_duty_to_pulse(Period, duty));
+      |                                                                                       ^~~~~~
+../../Libraries/hefei_libraries/hf_pwm.c(203): note: remove the 'if' if its condition is always true
+  203 |     else if(timer_periph == TIMER7)
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+  204 |     {
+../../Libraries/hefei_libraries/hf_pwm.c(181): note: initialize the variable 'Period' to silence this warning
+  181 |     uint16_t Period;
+      |                    ^
+      |                     = 0
+1 warning generated.
+compiling hf_pwm.c...
+compiling HF_Double_DC_Motor.c...
+compiling gd32f30x_dbg.c...
+compiling dmx_tof400c.c...
+../../Libraries/hefei_libraries/hf_qtimer.c(19): warning: unused parameter 'Encodernum' [-Wunused-parameter]
+   19 | void timer_quad_init(encoder_typedef_enum Encodernum)
+      |                                           ^
+../../Libraries/hefei_libraries/hf_qtimer.c(107): warning: variable 'value' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+  107 |     else if(Encodernum == Encoder2)
+      |             ^~~~~~~~~~~~~~~~~~~~~~
+../../Libraries/hefei_libraries/hf_qtimer.c(113): note: uninitialized use occurs here
+  113 |     return value;
+      |            ^~~~~
+../../Libraries/hefei_libraries/hf_qtimer.c(107): note: remove the 'if' if its condition is always true
+  107 |     else if(Encodernum == Encoder2)
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+  108 |     {
+../../Libraries/hefei_libraries/hf_qtimer.c(97): note: initialize the variable 'value' to silence this warning
+   97 |     int16_t value, value1, value2;
+      |                  ^
+      |                   = 0
+2 warnings generated.
+compiling hf_qtimer.c...
+compiling gd32f30x_adc.c...
+../../Libraries/hefei_libraries/hf_gpio.c(176): error: use of undeclared identifier 'GPIO_CAN_PARTIAL_REMAP'; did you mean 'CAN_PARTIAL_REMAP'?
+  176 |         gpio_pin_remap_config(GPIO_CAN_PARTIAL_REMAP, ENABLE);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~
+      |                               CAN_PARTIAL_REMAP
+../../Libraries/hefei_libraries\hf_gpio.h(47): note: 'CAN_PARTIAL_REMAP' declared here
+   47 |     CAN_PARTIAL_REMAP = 15,             //CAN<B2><BF><B7><D6><D6><D8>ӳ<C9><E4>
+      |     ^
+../../Libraries/hefei_libraries/hf_gpio.c(181): error: use of undeclared identifier 'GPIO_CAN_FULL_REMAP'; did you mean 'CAN_FULL_REMAP'?
+  181 |         gpio_pin_remap_config(GPIO_CAN_FULL_REMAP, ENABLE);
+      |                               ^~~~~~~~~~~~~~~~~~~
+      |                               CAN_FULL_REMAP
+../../Libraries/hefei_libraries\hf_gpio.h(48): note: 'CAN_FULL_REMAP' declared here
+   48 |     CAN_FULL_REMAP = 16,                //CAN<CD><EA>ȫ<D6><D8>ӳ<C9><E4>
+      |     ^
+../../Libraries/hefei_libraries/hf_gpio.c(196): error: use of undeclared identifier 'GPIO_ADC0_ETRGINS_REMAP'; did you mean 'ADC0_ETRGINS_REMAP'?
+  196 |         gpio_pin_remap_config(GPIO_ADC0_ETRGINS_REMAP, ENABLE);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~
+      |                               ADC0_ETRGINS_REMAP
+../../Libraries/hefei_libraries\hf_gpio.h(51): note: 'ADC0_ETRGINS_REMAP' declared here
+   51 |     ADC0_ETRGINS_REMAP = 19,            //ADC0ע<C8><EB>ת<BB><BB><CD>ⲿ<B4><A5><B7><A2><D6><D8>ӳ<C9><E4>
+      |     ^
+../../Libraries/hefei_libraries/hf_gpio.c(201): error: use of undeclared identifier 'GPIO_ADC0_ETRGREG_REMAP'; did you mean 'ADC0_ETRGREG_REMAP'?
+  201 |         gpio_pin_remap_config(GPIO_ADC0_ETRGREG_REMAP, ENABLE);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~
+      |                               ADC0_ETRGREG_REMAP
+../../Libraries/hefei_libraries\hf_gpio.h(52): note: 'ADC0_ETRGREG_REMAP' declared here
+   52 |     ADC0_ETRGREG_REMAP = 20,            //ADC0<B9><E6><D4><F2>ת<BB><BB><CD>ⲿ<B4><A5><B7><A2><D6><D8>ӳ<C9><E4>
+      |     ^
+../../Libraries/hefei_libraries/hf_gpio.c(206): error: use of undeclared identifier 'GPIO_ADC1_ETRGINS_REMAP'; did you mean 'ADC1_ETRGINS_REMAP'?
+  206 |         gpio_pin_remap_config(GPIO_ADC1_ETRGINS_REMAP, ENABLE);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~
+      |                               ADC1_ETRGINS_REMAP
+../../Libraries/hefei_libraries\hf_gpio.h(53): note: 'ADC1_ETRGINS_REMAP' declared here
+   53 |     ADC1_ETRGINS_REMAP = 21,            //ADC1ע<C8><EB>ת<BB><BB><CD>ⲿ<B4><A5><B7><A2><D6><D8>ӳ<C9><E4>
+      |     ^
+../../Libraries/hefei_libraries/hf_gpio.c(211): error: use of undeclared identifier 'GPIO_ADC1_ETRGREG_REMAP'; did you mean 'ADC1_ETRGREG_REMAP'?
+  211 |         gpio_pin_remap_config(GPIO_ADC1_ETRGREG_REMAP, ENABLE);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~
+      |                               ADC1_ETRGREG_REMAP
+../../Libraries/hefei_libraries\hf_gpio.h(54): note: 'ADC1_ETRGREG_REMAP' declared here
+   54 |     ADC1_ETRGREG_REMAP = 22,            //ADC1<B9><E6><D4><F2>ת<BB><BB><CD>ⲿ<B4><A5><B7><A2><D6><D8>ӳ<C9><E4>
+      |     ^
+6 errors generated.
+compiling hf_gpio.c...
+compiling HF_OLED.c...
+compiling gd32f30x_enet.c...
+compiling gd32f30x_gpio.c...
+compiling gd32f30x_sdio.c...
+compiling gd32f30x_i2c.c...
+compiling gd32f30x_misc.c...
+compiling gd32f30x_fmc.c...
+compiling gd32f30x_fwdgt.c...
+compiling gd32f30x_usart.c...
+compiling gd32f30x_rtc.c...
+compiling gd32f30x_pmu.c...
+compiling gd32f30x_wwdgt.c...
+compiling gd32f30x_spi.c...
+compiling xunxian.c...
+compiling gd32f30x_rcu.c...
+compiling control.c...
+compiling bluetooth_tuning.c...
+compiling gd32f30x_timer.c...
+../CODE/board.c(893): warning: variable 'ws28' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+  893 |          else if(wsz28 < lmd)
+      |                  ^~~~~~~~~~~
+../CODE/board.c(898): note: uninitialized use occurs here
+  898 | return ws28;
+      |        ^~~~
+../CODE/board.c(893): note: remove the 'if' if its condition is always true
+  893 |          else if(wsz28 < lmd)
+      |               ^~~~~~~~~~~~~~~
+  894 |      {  
+../CODE/board.c(888): warning: variable 'ws28' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+  888 |                 else if(wsz28 == wzc )
+      |                         ^~~~~~~~~~~~
+../CODE/board.c(898): note: uninitialized use occurs here
+  898 | return ws28;
+      |        ^~~~
+../CODE/board.c(888): note: remove the 'if' if its condition is always true
+  888 |                 else if(wsz28 == wzc )
+      |                      ^~~~~~~~~~~~~~~~~
+  889 |                  {      
+../CODE/board.c(869): note: initialize the variable 'ws28' to silence this warning
+  869 |           u8 ws28;
+      |                  ^
+      |                   = '\0'
+../CODE/board.c(930): warning: variable 'ws28' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+  930 |           else if(wsy28 < lmd)
+      |                   ^~~~~~~~~~~
+../CODE/board.c(934): note: uninitialized use occurs here
+  934 |                  return ws28;
+      |                         ^~~~
+../CODE/board.c(930): note: remove the 'if' if its condition is always true
+  930 |           else if(wsy28 < lmd)
+      |                ^~~~~~~~~~~~~~~
+  931 |      {  
+../CODE/board.c(925): warning: variable 'ws28' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+  925 |                  else if(wsy28 == wyc )
+      |                          ^~~~~~~~~~~~
+../CODE/board.c(934): note: uninitialized use occurs here
+  934 |                  return ws28;
+      |                         ^~~~
+../CODE/board.c(925): note: remove the 'if' if its condition is always true
+  925 |                  else if(wsy28 == wyc )
+      |                       ^~~~~~~~~~~~~~~~~
+  926 |                  {      
+../CODE/board.c(903): note: initialize the variable 'ws28' to silence this warning
+  903 |           u8 ws28;
+      |                  ^
+      |                   = '\0'
+4 warnings generated.
+compiling board.c...
+compiling car_adc.c...
+compiling car_init.c...
+compiling car_light.c...
+compiling car_buzzer.c...
+compiling car_6keys.c...
+compiling car_uart.c...
+compiling car_reed.c...
+compiling car_motion.c...
+compiling car_value_process.c...
+compiling encoder.c...
+../CODE/car_oled.c(10): warning: In file included from...../CODE\oledfont.h(15): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   15 | 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,// sp
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(16): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   16 | 0x00, 0x00, 0x00, 0x2f, 0x00, 0x00,// !
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(17): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   17 | 0x00, 0x00, 0x07, 0x00, 0x07, 0x00,// "
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(18): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   18 | 0x00, 0x14, 0x7f, 0x14, 0x7f, 0x14,// #
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(19): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   19 | 0x00, 0x24, 0x2a, 0x7f, 0x2a, 0x12,// $
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(20): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   20 | 0x00, 0x62, 0x64, 0x08, 0x13, 0x23,// %
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(21): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   21 | 0x00, 0x36, 0x49, 0x55, 0x22, 0x50,// &
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(22): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   22 | 0x00, 0x00, 0x05, 0x03, 0x00, 0x00,// '
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(23): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   23 | 0x00, 0x00, 0x1c, 0x22, 0x41, 0x00,// (
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(24): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   24 | 0x00, 0x00, 0x41, 0x22, 0x1c, 0x00,// )
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(25): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   25 | 0x00, 0x14, 0x08, 0x3E, 0x08, 0x14,// *
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(26): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   26 | 0x00, 0x08, 0x08, 0x3E, 0x08, 0x08,// +
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(27): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   27 | 0x00, 0x00, 0x00, 0xA0, 0x60, 0x00,// ,
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(28): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   28 | 0x00, 0x08, 0x08, 0x08, 0x08, 0x08,// -
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(29): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   29 | 0x00, 0x00, 0x60, 0x60, 0x00, 0x00,// .
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(30): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   30 | 0x00, 0x20, 0x10, 0x08, 0x04, 0x02,// /
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(31): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   31 | 0x00, 0x3E, 0x51, 0x49, 0x45, 0x3E,// 0
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(32): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   32 | 0x00, 0x00, 0x42, 0x7F, 0x40, 0x00,// 1
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(33): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   33 | 0x00, 0x42, 0x61, 0x51, 0x49, 0x46,// 2
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(34): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   34 | 0x00, 0x21, 0x41, 0x45, 0x4B, 0x31,// 3
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(35): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   35 | 0x00, 0x18, 0x14, 0x12, 0x7F, 0x10,// 4
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(36): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   36 | 0x00, 0x27, 0x45, 0x45, 0x45, 0x39,// 5
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(37): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   37 | 0x00, 0x3C, 0x4A, 0x49, 0x49, 0x30,// 6
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(38): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   38 | 0x00, 0x01, 0x71, 0x09, 0x05, 0x03,// 7
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(39): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   39 | 0x00, 0x36, 0x49, 0x49, 0x49, 0x36,// 8
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(40): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   40 | 0x00, 0x06, 0x49, 0x49, 0x29, 0x1E,// 9
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(41): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   41 | 0x00, 0x00, 0x36, 0x36, 0x00, 0x00,// :
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(42): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   42 | 0x00, 0x00, 0x56, 0x36, 0x00, 0x00,// ;
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(43): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   43 | 0x00, 0x08, 0x14, 0x22, 0x41, 0x00,// <
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(44): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   44 | 0x00, 0x14, 0x14, 0x14, 0x14, 0x14,// =
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(45): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   45 | 0x00, 0x00, 0x41, 0x22, 0x14, 0x08,// >
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(46): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   46 | 0x00, 0x02, 0x01, 0x51, 0x09, 0x06,// ?
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(47): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   47 | 0x00, 0x32, 0x49, 0x59, 0x51, 0x3E,// @
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(48): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   48 | 0x00, 0x7C, 0x12, 0x11, 0x12, 0x7C,// A
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(49): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   49 | 0x00, 0x7F, 0x49, 0x49, 0x49, 0x36,// B
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(50): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   50 | 0x00, 0x3E, 0x41, 0x41, 0x41, 0x22,// C
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(51): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   51 | 0x00, 0x7F, 0x41, 0x41, 0x22, 0x1C,// D
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(52): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   52 | 0x00, 0x7F, 0x49, 0x49, 0x49, 0x41,// E
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(53): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   53 | 0x00, 0x7F, 0x09, 0x09, 0x09, 0x01,// F
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(54): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   54 | 0x00, 0x3E, 0x41, 0x49, 0x49, 0x7A,// G
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(55): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   55 | 0x00, 0x7F, 0x08, 0x08, 0x08, 0x7F,// H
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(56): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   56 | 0x00, 0x00, 0x41, 0x7F, 0x41, 0x00,// I
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(57): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   57 | 0x00, 0x20, 0x40, 0x41, 0x3F, 0x01,// J
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(58): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   58 | 0x00, 0x7F, 0x08, 0x14, 0x22, 0x41,// K
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(59): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   59 | 0x00, 0x7F, 0x40, 0x40, 0x40, 0x40,// L
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(60): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   60 | 0x00, 0x7F, 0x02, 0x0C, 0x02, 0x7F,// M
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(61): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   61 | 0x00, 0x7F, 0x04, 0x08, 0x10, 0x7F,// N
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(62): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   62 | 0x00, 0x3E, 0x41, 0x41, 0x41, 0x3E,// O
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(63): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   63 | 0x00, 0x7F, 0x09, 0x09, 0x09, 0x06,// P
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(64): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   64 | 0x00, 0x3E, 0x41, 0x51, 0x21, 0x5E,// Q
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(65): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   65 | 0x00, 0x7F, 0x09, 0x19, 0x29, 0x46,// R
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(66): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   66 | 0x00, 0x46, 0x49, 0x49, 0x49, 0x31,// S
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(67): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   67 | 0x00, 0x01, 0x01, 0x7F, 0x01, 0x01,// T
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(68): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   68 | 0x00, 0x3F, 0x40, 0x40, 0x40, 0x3F,// U
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(69): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   69 | 0x00, 0x1F, 0x20, 0x40, 0x20, 0x1F,// V
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(70): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   70 | 0x00, 0x3F, 0x40, 0x38, 0x40, 0x3F,// W
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(71): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   71 | 0x00, 0x63, 0x14, 0x08, 0x14, 0x63,// X
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(72): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   72 | 0x00, 0x07, 0x08, 0x70, 0x08, 0x07,// Y
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(73): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   73 | 0x00, 0x61, 0x51, 0x49, 0x45, 0x43,// Z
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(74): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   74 | 0x00, 0x00, 0x7F, 0x41, 0x41, 0x00,// [
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(75): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   75 | 0x00, 0x55, 0x2A, 0x55, 0x2A, 0x55,// 55
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(76): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   76 | 0x00, 0x00, 0x41, 0x41, 0x7F, 0x00,// ]
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(77): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   77 | 0x00, 0x04, 0x02, 0x01, 0x02, 0x04,// ^
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(78): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   78 | 0x00, 0x40, 0x40, 0x40, 0x40, 0x40,// _
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(79): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   79 | 0x00, 0x00, 0x01, 0x02, 0x04, 0x00,// '
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(80): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   80 | 0x00, 0x20, 0x54, 0x54, 0x54, 0x78,// a
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(81): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   81 | 0x00, 0x7F, 0x48, 0x44, 0x44, 0x38,// b
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(82): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   82 | 0x00, 0x38, 0x44, 0x44, 0x44, 0x20,// c
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(83): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   83 | 0x00, 0x38, 0x44, 0x44, 0x48, 0x7F,// d
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(84): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   84 | 0x00, 0x38, 0x54, 0x54, 0x54, 0x18,// e
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(85): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   85 | 0x00, 0x08, 0x7E, 0x09, 0x01, 0x02,// f
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(86): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   86 | 0x00, 0x18, 0xA4, 0xA4, 0xA4, 0x7C,// g
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(87): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   87 | 0x00, 0x7F, 0x08, 0x04, 0x04, 0x78,// h
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(88): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   88 | 0x00, 0x00, 0x44, 0x7D, 0x40, 0x00,// i
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(89): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   89 | 0x00, 0x40, 0x80, 0x84, 0x7D, 0x00,// j
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(90): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   90 | 0x00, 0x7F, 0x10, 0x28, 0x44, 0x00,// k
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(91): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   91 | 0x00, 0x00, 0x41, 0x7F, 0x40, 0x00,// l
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(92): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   92 | 0x00, 0x7C, 0x04, 0x18, 0x04, 0x78,// m
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(93): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   93 | 0x00, 0x7C, 0x08, 0x04, 0x04, 0x78,// n
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(94): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   94 | 0x00, 0x38, 0x44, 0x44, 0x44, 0x38,// o
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(95): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   95 | 0x00, 0xFC, 0x24, 0x24, 0x24, 0x18,// p
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(96): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   96 | 0x00, 0x18, 0x24, 0x24, 0x18, 0xFC,// q
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(97): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   97 | 0x00, 0x7C, 0x08, 0x04, 0x04, 0x08,// r
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(98): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   98 | 0x00, 0x48, 0x54, 0x54, 0x54, 0x20,// s
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(99): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+   99 | 0x00, 0x04, 0x3F, 0x44, 0x40, 0x20,// t
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(100): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+  100 | 0x00, 0x3C, 0x40, 0x40, 0x20, 0x7C,// u
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(101): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+  101 | 0x00, 0x1C, 0x20, 0x40, 0x20, 0x1C,// v
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(102): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+  102 | 0x00, 0x3C, 0x40, 0x30, 0x40, 0x3C,// w
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(103): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+  103 | 0x00, 0x44, 0x28, 0x10, 0x28, 0x44,// x
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(104): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+  104 | 0x00, 0x1C, 0xA0, 0xA0, 0xA0, 0x7C,// y
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(105): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+  105 | 0x00, 0x44, 0x64, 0x54, 0x4C, 0x44,// z
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE\oledfont.h(106): warning: suggest braces around initialization of subobject [-Wmissing-braces]
+  106 | 0x14, 0x14, 0x14, 0x14, 0x14, 0x14,// horiz lines
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      | {                                 }
+../CODE/car_oled.c(199): warning: variable 'adder' set but not used [-Wunused-but-set-variable]
+  199 |     uint8_t t,adder = 0;
+      |               ^
+93 warnings generated.
+compiling car_oled.c...
+".\output\Project.axf" - 8 Error(s), 109 Warning(s).
+Target not created.
+Build Time Elapsed:  00:00:17

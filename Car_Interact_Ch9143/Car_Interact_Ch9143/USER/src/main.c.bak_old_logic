@@ -1,0 +1,256 @@
+/*********************************************************************************************************************
+* @file            main.c
+* @brief           CH9143 dual-car message interaction demo
+* @Target core     GD32F303RCT6
+********************************************************************************************************************/
+
+#include "main.h"
+#include "headfile.h"
+#include <string.h>
+
+#define CH9143_UART             USART1
+#define CH9143_UART_IRQ         USART1_IRQn
+#define CH9143_UART_BAUD        115200
+#define CH9143_UART_TX_PORT     GPIOA
+#define CH9143_UART_TX_PIN      GPIO_PIN_2
+#define CH9143_UART_RX_PORT     GPIOA
+#define CH9143_UART_RX_PIN      GPIO_PIN_3
+
+/* 1: old new_racetrackV3.2 role, 2: old basic_campus12 role. */
+#ifndef CH9143_CAR_ROLE
+#define CH9143_CAR_ROLE         1
+#endif
+
+#define BLE_BUF_SIZE            64
+
+uint8_t g_car_role = CH9143_CAR_ROLE;
+char send_buffer[BLE_BUF_SIZE] = {0};
+volatile char recv_buffer[BLE_BUF_SIZE] = {0};
+volatile uint16_t recv_data_flag = 0;
+
+static volatile uint8_t recv_write_index = 0;
+static uint32_t ble_send_timer = 0;
+static uint8_t last_key_value = 0xFF;
+
+extern volatile uint32_t g_millis;
+
+void set_string_uart(char *str)
+{
+    while (*str)
+    {
+        uart_putchar(CH9143_UART, (uint8_t)*str++);
+    }
+}
+
+void ch9143_ble_send_data(char *data, int len)
+{
+    if (data == 0 || data[0] == '\0')
+    {
+        return;
+    }
+
+    if (len < 0)
+    {
+        len = (int)strlen(data);
+    }
+
+    while (len-- > 0)
+    {
+        uart_putchar(CH9143_UART, (uint8_t)*data++);
+    }
+}
+
+void ch9143_ble_rx_byte(uint8_t data)
+{
+    if (data == '\r' || data == '\n')
+    {
+        return;
+    }
+
+    if (recv_write_index >= (BLE_BUF_SIZE - 1U))
+    {
+        recv_write_index = 0;
+        memset((void *)recv_buffer, 0, BLE_BUF_SIZE);
+    }
+
+    recv_buffer[recv_write_index++] = (char)data;
+    recv_buffer[recv_write_index] = '\0';
+    recv_data_flag = recv_write_index;
+}
+
+static void ch9143_ble_clear_recv(void)
+{
+    recv_write_index = 0;
+    recv_data_flag = 0;
+    memset((void *)recv_buffer, 0, BLE_BUF_SIZE);
+}
+
+static uint8_t ch9143_recv_has(const char *long_token, const char *short_token)
+{
+    const char *buf = (const char *)recv_buffer;
+    return (strstr(buf, long_token) != 0 || strstr(buf, short_token) != 0);
+}
+
+static void ch9143_show_status(const char *title, const char *msg)
+{
+    oled_clear();
+    oled_show_string(0, 0, (uint8_t *)title, 16);
+    oled_show_string(0, 2, (uint8_t *)msg, 16);
+}
+
+static void ch9143_set_send_msg(const char *msg)
+{
+    strncpy(send_buffer, msg, BLE_BUF_SIZE - 1U);
+    send_buffer[BLE_BUF_SIZE - 1U] = '\0';
+    ch9143_ble_send_data(send_buffer, -1);
+    ble_send_timer = g_millis;
+    ch9143_show_status("TX", send_buffer);
+}
+
+static void ch9143_set_role(uint8_t role)
+{
+    g_car_role = role;
+    if (g_car_role == 1U)
+    {
+        strcpy(send_buffer, "0x01");
+        ch9143_show_status("ROLE", "CAR1");
+    }
+    else
+    {
+        g_car_role = 2U;
+        strcpy(send_buffer, "0x03");
+        ch9143_show_status("ROLE", "CAR2");
+    }
+    ble_send_timer = g_millis;
+}
+
+static void ch9143_handle_key(uint8_t key_value)
+{
+    if (key_value == 0xFF || key_value == last_key_value)
+    {
+        return;
+    }
+
+    last_key_value = key_value;
+
+    switch (key_value)
+    {
+        case 0x01:
+            ch9143_set_send_msg("0x01");
+            break;
+        case 0x02:
+            ch9143_set_send_msg("0x02");
+            break;
+        case 0x03:
+            ch9143_set_send_msg("0x03");
+            break;
+        case 0x04:
+            ch9143_set_send_msg("0x04");
+            break;
+        case 0x05:
+            ch9143_set_role(1U);
+            break;
+        case 0x06:
+            ch9143_set_role(2U);
+            break;
+        default:
+            break;
+    }
+}
+
+static void ch9143_periodic_send(void)
+{
+    uint32_t period_ms;
+
+    if (send_buffer[0] == '\0')
+    {
+        return;
+    }
+
+    period_ms = (g_car_role == 1U) ? 500U : 150U;
+    if ((uint32_t)(g_millis - ble_send_timer) >= period_ms)
+    {
+        ch9143_ble_send_data(send_buffer, -1);
+        ble_send_timer = g_millis;
+    }
+}
+
+static void ch9143_process_recv(void)
+{
+    if (recv_data_flag == 0)
+    {
+        return;
+    }
+
+    if (g_car_role == 1U)
+    {
+        if (ch9143_recv_has("0x01", "01"))
+        {
+            ch9143_show_status("RX", "0x01 OBS");
+            ch9143_ble_clear_recv();
+        }
+        else if (ch9143_recv_has("0x03", "03"))
+        {
+            ch9143_show_status("RX", "0x03 PARK");
+            ch9143_ble_clear_recv();
+        }
+        else if (ch9143_recv_has("0x04", "04"))
+        {
+            ch9143_show_status("RX", "0x04 DONE");
+            ch9143_ble_clear_recv();
+        }
+    }
+    else
+    {
+        if (ch9143_recv_has("0x01", "01"))
+        {
+            ch9143_show_status("RX", "0x01 RUN");
+            ch9143_ble_clear_recv();
+        }
+        else if (ch9143_recv_has("0x02", "02"))
+        {
+            ch9143_show_status("RX", "0x02 AVOID");
+            ch9143_ble_clear_recv();
+        }
+        else if (ch9143_recv_has("0x04", "04"))
+        {
+            ch9143_show_status("RX", "0x04 PARKOK");
+            ch9143_ble_clear_recv();
+        }
+        else if (ch9143_recv_has("0x03", "03"))
+        {
+            ch9143_show_status("RX", "0x03 PARK");
+            ch9143_ble_clear_recv();
+        }
+    }
+}
+
+int main(void)
+{
+    unsigned char key_value;
+
+    car_init();
+    car_both_rgb_on(green, 50);
+
+    uart_init(CH9143_UART_TX_PORT, CH9143_UART_TX_PIN,
+              CH9143_UART_RX_PORT, CH9143_UART_RX_PIN,
+              CH9143_UART, CH9143_UART_BAUD);
+    uart_interrupt_init(CH9143_UART, USART_INT_RBNE, 1, CH9143_UART_IRQ);
+
+    ch9143_set_role(g_car_role);
+    set_string_uart("CH9143 car interact ready\r\n");
+    ble_send_timer = g_millis;
+
+    while (1)
+    {
+        key_value = key_check();
+        ch9143_handle_key(key_value);
+        if (key_value == 0xFF)
+        {
+            last_key_value = 0xFF;
+        }
+
+        ch9143_process_recv();
+        ch9143_periodic_send();
+    }
+}

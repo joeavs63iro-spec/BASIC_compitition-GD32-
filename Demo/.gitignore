@@ -1,0 +1,26 @@
+# Keil MDK build outputs
+**/MDK/output/
+**/MDK/list/
+**/MDK/*.bak
+**/MDK/*.Bak
+**/MDK/*.dep
+**/MDK/*.lnp
+**/MDK/*.map
+**/MDK/*.htm
+**/MDK/*.build_log.htm
+**/MDK/*.uvguix.*
+
+# ARM compiler artifacts
+*.axf
+*.crf
+*.d
+*.hex
+*.lst
+*.o
+*.sct
+*.__i
+
+# Editor and OS noise
+.vscode/
+.DS_Store
+Thumbs.db
